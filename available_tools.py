@@ -7,9 +7,9 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 web_search_tool = TavilySearchResults(k=3)
 
 urls = [
-    "https://lilianweng.github.io/posts/2023-06-23-agent/",
-    "https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/",
-    "https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/",
+    "https://sebastianraschka.com/blog/2025/the-state-of-reinforcement-learning-for-llm-reasoning.html",
+    "https://sebastianraschka.com/blog/2025/understanding-reasoning-llms.html",
+    "https://sebastianraschka.com/blog/2024/understanding-multimodal-llms.html",
 ]
 
 docs=[WebBaseLoader(url).load() for url in urls] 
