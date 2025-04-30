@@ -1,7 +1,7 @@
-from graph_build import graph
+from graph_build import graph_
 
 def main():
-    graph = graph
+    graph = graph_
     inputs = {"question": "What are agent memories?"}
     result = graph.invoke(inputs)
     print(result)

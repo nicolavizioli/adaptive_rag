@@ -1,5 +1,5 @@
 from langgraph.graph import END, StateGraph, START
-from graph_build import retrieve, generate, grade_documents, transform_query, web_search, grade_generation, GraphState, route_question, decide_to_generate
+from graph_def import retrieve, generate, grade_documents, transform_query, web_search, GraphState, route_question, decide_to_generate, grade_generation_v_documents_and_question
 
 workflow = StateGraph(GraphState)
 
@@ -31,6 +31,14 @@ workflow.add_conditional_edges(
     },
 )
 workflow.add_edge("transform_query", "retrieve")
-workflow.add_edge("generate", "END")
+workflow.add_conditional_edges(
+    "generate",
+    grade_generation_v_documents_and_question,
+    {
+        "not supported": "generate",
+        "useful": END,
+        "not useful": "transform_query",
+    },
+)
 
-graph=workflow.compile()
+graph_=workflow.compile()
